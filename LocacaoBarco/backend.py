@@ -3,7 +3,7 @@ from modelo import Barco
 
 @app.route("/")
 def padrao():
-    return "backend operante"
+    return "Funcionando...."
 
 @app.route("/listar_barcos")
 def listar_barcos():
