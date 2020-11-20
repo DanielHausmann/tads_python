@@ -22,8 +22,12 @@ if __name__ == "__main__":
 
     db.create_all()
 
-    novo = Barco(tipo="Iate",placa="VEL1234",ano="2020")
-    db.session.add(novo)
+    exemplo1 = Barco(tipo="Iate",placa="VEL1234",ano="2020")
+    exemplo2 = Barco(tipo="caiaque",placa="ciq1234",ano="2018")
+    exemplo3 = Barco(tipo="lancha",placa="lan8290",ano="2015")
+    db.session.add(exemplo1)
+    db.session.add(exemplo2)
+    db.session.add(exemplo3)
     db.session.commit()
     todas = db.session.query(Barco).all()
     for p in todas:
