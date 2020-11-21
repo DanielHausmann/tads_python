@@ -1,10 +1,8 @@
 $( document ).ready(function() {
 
-    $("#conteudoInicial").removeClass("invisible");
 
     $("#link_inicio").click(function(){
         $("#tabelaBarcos").addClass("invisible");
-        $("#conteudoInicial").removeClass("invisible");
     });
 
     $("#link_listar_barcos").click(function(){
@@ -33,11 +31,11 @@ $( document ).ready(function() {
            }
            $("#corpoTabelaBarcos").html(linhas);
 
-           $("#conteudoInicial").addClass("invisible");
+           $("#conteudoInicialBarco").addClass("invisible");
            $("#tabelaBarcos").addClass("invisible");
 
            $("#tabelaBarcos").removeClass("invisible");
-
+           
         }
         
     });
