@@ -1,9 +1,9 @@
 from config import *
-from modelo import Barco
+from tipoBarcos import Barco
 
 @app.route("/")
 def padrao():
-    return "Funcionando...."
+    return "Funcionando....."
 
 @app.route("/listar_barcos")
 def listar_barcos():
@@ -12,6 +12,7 @@ def listar_barcos():
     for p in barcos:
         retorno.append(p.json())
     resposta = jsonify(retorno)
+    resposta.headers.add("Access-Control-Allow-Origin","*")
     return resposta
 
 app.run(debug = True) 

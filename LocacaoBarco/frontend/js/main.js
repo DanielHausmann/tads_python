@@ -1,0 +1,45 @@
+$( document ).ready(function() {
+
+    $("#conteudoInicial").removeClass("invisible");
+
+    $("#link_inicio").click(function(){
+        $("#tabelaBarcos").addClass("invisible");
+        $("#conteudoInicial").removeClass("invisible");
+    });
+
+    $("#link_listar_barcos").click(function(){
+    
+        $.ajax({
+            url:'http://localhost:5000/listar_barcos',
+            method:'GET',
+            dataType:'json', // os dados são recebidos no formato json
+            success:listar_barcos, // chama a função listar para processar o resultado
+            error: function() {
+                alert("erro ao ler dados, verifique o backend");
+            }
+        });
+
+        function listar_barcos(barcos){
+           linhas = ""
+           for(var i in barcos){
+               lin = 
+                "<tr>" +
+                "<th>"+barcos[i].id+"</th>"+
+                "<td>"+barcos[i].tipo+"</td>"+
+                "<td>"+barcos[i].cor+"</td>"+
+                "<td>"+barcos[i].ano+"</td>"
+                "</tr>"
+                linhas = linhas + lin;
+           }
+           $("#corpoTabelaBarcos").html(linhas);
+
+           $("#conteudoInicial").addClass("invisible");
+           $("#tabelaBarcos").addClass("invisible");
+
+           $("#tabelaBarcos").removeClass("invisible");
+
+        }
+        
+    });
+
+  });
