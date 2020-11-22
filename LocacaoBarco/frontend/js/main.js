@@ -97,11 +97,12 @@ $( document ).ready(function() {
                 "<tr>" +
                 "<th>"+locacoes[i].id+"</th>"+
                 "<td>"+locacoes[i].cliente+"</td>"+
-                "<td>"+locacoes[i].dt_locacao+"</td>"+
-                "<td>"+locacoes[i].dt_entrega+"</td>"+
-                "<td>"+locacoes[i].id.barco+"</td>"
-                "<td>"+locacoes[i].id.colaborador+"</td>"
+                "<td>"+locacoes[i].data_locacao+"</td>"+
+                "<td>"+locacoes[i].data_entrega+"</td>"+
+                "<td>"+locacoes[i].id_barco+"</td>"+
+                "<td>"+locacoes[i].id_colaborador+"</td>"+
                 "</tr>"
+                
                 linhas = linhas + lin;
            }
            $("#corpoTabelaLocacao").html(linhas);

@@ -1,6 +1,7 @@
 from config import *
+from declararBD import *
 #barcos = db.relationship('Locacoes',backref="barco",lazy="select")
-
+'''
 class Locacoes(db.Model):
     __tablename__ = 'Locacoes'
     id = db.Column(db.Integer,primary_key = True)
@@ -20,26 +21,30 @@ class Locacoes(db.Model):
             "id barco" : self.id_barco,
             "id colaborador" : self.id_colaborador
         }
-
+'''
 
 
 if __name__ == "__main__":
 
     if os.path.exists(arquivobd):
-        os.remove(arquivobd)
+          db.session.query(Locacoes).delete()
 
     db.create_all()
     
 #Inserindo Locações no Banco de Dados
-    locacao1 = Locacoes(cliente = "Daniel",dt_locacao="21/11/2020",dt_entrega = "26/11/2020")
+    locacao1 = Locacoes(cliente = "Daniel",locacao="21/11/2020",dt_entrega = "26/11/2020")
     db.session.add(locacao1)
-    barco4 = Barco(tipo="Trawler",cor="amarelo",ano="2016")
-    db.session.add(barco4)
-    colaborador4 = Colaboradores(nome="Gabriel",email="Gabriel@bla.com",telefone="4444-4444",salario="7777")
-    db.session.add(colaborador4)
+    #barco4 = Barco(tipo="Trawler",cor="amarelo",ano="2016")
+    #db.session.add(barco4)
+    #listaBarcos = Barco.query.all()
+    barcoEscolhido = Barco.query.filter_by(ano="2018").first()
+   #colaborador4 = Colaboradores(nome="Gabriel",email="Gabriel@bla.com",telefone="4444-4444",salario="7777")
+   #db.session.add(colaborador4)
+    colaboradorEscolhido = Colaboradores.query.filter_by(nome="Theago").first()
 
-    colaborador4.colaboradores.append(locacao1)
-    barco4.barcos.append(locacao1)
+
+    colaboradorEscolhido.colaboradores.append(locacao1)
+    barcoEscolhido.barcos.append(locacao1)
     
     
     db.session.commit()

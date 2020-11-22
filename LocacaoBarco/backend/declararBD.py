@@ -5,6 +5,7 @@ class Barco(db.Model):
     cor = db.Column(db.String(254))
     ano = db.Column(db.Integer)
     tipo = db.Column(db.String(254))
+    barcos = db.relationship('Locacoes',backref="barco",lazy="select")
     def __str__(self):
         return str(self.id) + "," + self.tipo + "," + self.cor + "," + str(self.ano)   
     def json(self):
@@ -23,7 +24,7 @@ class Colaboradores(db.Model):
     email = db.Column(db.String(254))
     telefone = db.Column(db.String(254))
     salario = db.Column(db.String(254))
-    #colaboradores = db.relationship('Locacoes',backref="colaboradores",lazy="select")
+    colaboradores = db.relationship('Locacoes',backref="colaboradores",lazy="select")
     def __str__(self):
         return str(self.id) + "," + self.nome + "," + self.email + "," + self.telefone + "," + self.salario   
     def json(self):
@@ -34,6 +35,26 @@ class Colaboradores(db.Model):
             "telefone" : self.telefone,
             "salario" : self.salario
         }
+
+class Locacoes(db.Model):
+    __tablename__ = 'Locacoes'
+    id = db.Column(db.Integer,primary_key = True)
+    cliente = db.Column(db.String(254))
+    locacao = db.Column(db.String(254))
+    dt_entrega = db.Column(db.String(254))
+    id_barco = db.Column(db.Integer, db.ForeignKey('barco.id'))
+    id_colaborador = db.Column(db.Integer, db.ForeignKey('colaboradores.id'))
+    def __str__(self):
+        return str(self.id) + "," + self.cliente + "," + self.locacao + "," + self.dt_entrega  + "," + str(self.id_barco) + "," + str(self.id_colaborador)
+    def json(self):
+        return {
+            "id" : self.id,
+            "cliente" : self.cliente,
+            "data_locacao" : self.locacao,
+            "data_entrega" : self.dt_entrega,
+            "id_barco" : self.id_barco,
+            "id_colaborador" : self.id_colaborador
+        }        
 
 
 if __name__ == "__main__":
