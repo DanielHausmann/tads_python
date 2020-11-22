@@ -4,7 +4,7 @@ $( document ).ready(function() {
     $("#link_inicio").click(function(){
         $("#tabelaBarcos").addClass("invisible");
     });
-
+// Codificação referente a listagem de Barcos
     $("#link_listar_barcos").click(function(){
     
         $.ajax({
@@ -39,5 +39,83 @@ $( document ).ready(function() {
         }
         
     });
+
+//Codificação referente a listagem de Colaboradores
+    $("#link_listar_colaboradores").click(function(){
+    
+        $.ajax({
+            url:'http://localhost:5000/listar_colaboradores',
+            method:'GET',
+            dataType:'json',
+            success:listar_colaboradores,
+            error: function() {
+                alert("erro ao ler dados, verifique o backend");
+            }
+        });
+
+        function listar_colaboradores(colaboradores){
+           linhas = ""
+           for(var i in colaboradores){
+               lin = 
+                "<tr>" +
+                "<th>"+colaboradores[i].id+"</th>"+
+                "<td>"+colaboradores[i].nome+"</td>"+
+                "<td>"+colaboradores[i].email+"</td>"+
+                "<td>"+colaboradores[i].telefone+"</td>"+
+                "<td>"+colaboradores[i].salario+"</td>"
+                "</tr>"
+                linhas = linhas + lin;
+           }
+           $("#corpoTabelaColaboradores").html(linhas);
+
+           $("#conteudoInicialColaboradores").addClass("invisible");
+           $("#tabelaColaboradores").addClass("invisible");
+
+           $("#tabelaColaboradores").removeClass("invisible");
+           
+        }
+        
+    });
+
+
+    $("#link_listar_locacao").click(function(){
+    
+        $.ajax({
+            url:'http://localhost:5000/listar_locacoes',
+            method:'GET',
+            dataType:'json',
+            success:listar_locacoes,
+            error: function() {
+                alert("erro ao ler dados, verifique o backend");
+            }
+        });
+
+        function listar_locacoes(locacoes){
+           linhas = ""
+           for(var i in locacoes){
+               lin = 
+                "<tr>" +
+                "<th>"+locacoes[i].id+"</th>"+
+                "<td>"+locacoes[i].cliente+"</td>"+
+                "<td>"+locacoes[i].dt_locacao+"</td>"+
+                "<td>"+locacoes[i].dt_entrega+"</td>"+
+                "<td>"+locacoes[i].id.barco+"</td>"
+                "<td>"+locacoes[i].id.colaborador+"</td>"
+                "</tr>"
+                linhas = linhas + lin;
+           }
+           $("#corpoTabelaLocacao").html(linhas);
+
+           $("#conteudoInicialLocacao").addClass("invisible");
+           $("#tabelaLocacao").addClass("invisible");
+
+           $("#tabelaLocacao").removeClass("invisible");
+           
+        }
+        
+    });
+
+
+    
 
   });
