@@ -1,10 +1,6 @@
 $( document ).ready(function() {
 
-
-    $("#link_inicio").click(function(){
-        $("#tabelaBarcos").addClass("invisible");
-    });
-// Codificação referente a listagem de Barcos
+    // Codificação referente a listagem de Barcos
     $("#link_listar_barcos").click(function(){
     
         $.ajax({
@@ -40,7 +36,7 @@ $( document ).ready(function() {
         
     });
 
-//Codificação referente a listagem de Colaboradores
+    //Codificação referente a listagem de Colaboradores
     $("#link_listar_colaboradores").click(function(){
     
         $.ajax({
@@ -77,7 +73,7 @@ $( document ).ready(function() {
         
     });
 
-
+    // Codificação referente a listagem de Locações
     $("#link_listar_locacao").click(function(){
     
         $.ajax({
@@ -114,9 +110,6 @@ $( document ).ready(function() {
            
         }
         
-    });
-
-
-    
+    });    
 
   });

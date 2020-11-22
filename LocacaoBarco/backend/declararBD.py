@@ -1,11 +1,13 @@
 from config import *
 
+#Declara a Tabela Barco no Banco de Dados
 class Barco(db.Model):
+    
     id = db.Column(db.Integer,primary_key = True)
     cor = db.Column(db.String(254))
     ano = db.Column(db.Integer)
     tipo = db.Column(db.String(254))
-    barcos = db.relationship('Locacoes',backref="barco",lazy="select")
+    barcos = db.relationship('Locacoes',backref="barco",lazy="select") 
     def __str__(self):
         return str(self.id) + "," + self.tipo + "," + self.cor + "," + str(self.ano)   
     def json(self):
@@ -16,7 +18,7 @@ class Barco(db.Model):
             "ano" : self.ano
         }
 
-
+#Declara a Tabela Colaboradores no Banco de Dados
 class Colaboradores(db.Model):
     
     id = db.Column(db.Integer,primary_key = True)
@@ -36,8 +38,9 @@ class Colaboradores(db.Model):
             "salario" : self.salario
         }
 
+#Declara a Tabela Locacoes no Banco de Dados
 class Locacoes(db.Model):
-    __tablename__ = 'Locacoes'
+    
     id = db.Column(db.Integer,primary_key = True)
     cliente = db.Column(db.String(254))
     locacao = db.Column(db.String(254))
@@ -64,14 +67,5 @@ if __name__ == "__main__":
 
     db.create_all()
 
-
-    #Listando todos os Colaboradores
-    todosColaboradores = db.session.query(Colaboradores).all()
-    for p in todosColaboradores:
-        print(p)
-        print(p.json())
-
-    todosBarcos = db.session.query(Barco).all()
-    for p in todosBarcos:
-        print(p)
-        print(p.json())
+    
+    print("Banco de Dados declarado com sucesso!")
