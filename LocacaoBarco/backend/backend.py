@@ -1,6 +1,7 @@
 from config import *
-from declararBD import *  
-
+#from testar_colaboradores import *
+#from testar_barco import *
+from declararBD import *
 #Rota padrão para verificar se a aplicação está funcionando
 @app.route("/")
 def padrao():

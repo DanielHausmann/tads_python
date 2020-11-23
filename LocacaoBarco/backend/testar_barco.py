@@ -1,10 +1,31 @@
 from config import *
-from declararBD import *
+   
+#Declara a Tabela Barco no Banco de Dados
+class Barco(db.Model):
+    __table_args__ = {'extend_existing': True} 
+    id = db.Column(db.Integer,primary_key = True)
+    cor = db.Column(db.String(254))
+    ano = db.Column(db.Integer)
+    tipo = db.Column(db.String(254))
+    #barcos = db.relationship('Locacoes',backref="barco",lazy="select") 
+    def __str__(self):
+        return str(self.id) + "," + self.tipo + "," + self.cor + "," + str(self.ano)   
+    def json(self):
+        return {
+            "id" : self.id,
+            "tipo" : self.tipo,
+            "cor" : self.cor,
+            "ano" : self.ano
+        }
 
 if __name__ == "__main__":
 
     if os.path.exists(arquivobd):
-       db.session.query(Barco).delete()
+        os.remove(arquivobd)
+
+    db.create_all()
+       
+    
     
     #Inserindo Barcos no Banco de Dados
     exemplo1 = Barco(tipo="Iate",cor="azul",ano="2020")
@@ -21,3 +42,4 @@ if __name__ == "__main__":
     #Listando todos os Barcos em formato Json
     for p in todas:
         print(p.json())
+    

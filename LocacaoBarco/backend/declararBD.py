@@ -1,13 +1,13 @@
 from config import *
-
+   
 #Declara a Tabela Barco no Banco de Dados
 class Barco(db.Model):
-    
+    __table_args__ = {'extend_existing': True} 
     id = db.Column(db.Integer,primary_key = True)
     cor = db.Column(db.String(254))
     ano = db.Column(db.Integer)
     tipo = db.Column(db.String(254))
-    barcos = db.relationship('Locacoes',backref="barco",lazy="select") 
+    #barcos = db.relationship('Locacoes',backref="barco",lazy="select") 
     def __str__(self):
         return str(self.id) + "," + self.tipo + "," + self.cor + "," + str(self.ano)   
     def json(self):
@@ -18,15 +18,14 @@ class Barco(db.Model):
             "ano" : self.ano
         }
 
-#Declara a Tabela Colaboradores no Banco de Dados
 class Colaboradores(db.Model):
-    
+    __table_args__ = {'extend_existing': True} 
     id = db.Column(db.Integer,primary_key = True)
     nome = db.Column(db.String(254))
     email = db.Column(db.String(254))
     telefone = db.Column(db.String(254))
     salario = db.Column(db.String(254))
-    colaboradores = db.relationship('Locacoes',backref="colaboradores",lazy="select")
+    #colaboradores = db.relationship('Locacoes',backref="colaboradores",lazy="select")
     def __str__(self):
         return str(self.id) + "," + self.nome + "," + self.email + "," + self.telefone + "," + self.salario   
     def json(self):
@@ -38,27 +37,6 @@ class Colaboradores(db.Model):
             "salario" : self.salario
         }
 
-#Declara a Tabela Locacoes no Banco de Dados
-class Locacoes(db.Model):
-    
-    id = db.Column(db.Integer,primary_key = True)
-    cliente = db.Column(db.String(254))
-    locacao = db.Column(db.String(254))
-    dt_entrega = db.Column(db.String(254))
-    id_barco = db.Column(db.Integer, db.ForeignKey('barco.id'))
-    id_colaborador = db.Column(db.Integer, db.ForeignKey('colaboradores.id'))
-    def __str__(self):
-        return str(self.id) + "," + self.cliente + "," + self.locacao + "," + self.dt_entrega  + "," + str(self.id_barco) + "," + str(self.id_colaborador)
-    def json(self):
-        return {
-            "id" : self.id,
-            "cliente" : self.cliente,
-            "data_locacao" : self.locacao,
-            "data_entrega" : self.dt_entrega,
-            "id_barco" : self.id_barco,
-            "id_colaborador" : self.id_colaborador
-        }        
-
 
 if __name__ == "__main__":
 
@@ -66,6 +44,35 @@ if __name__ == "__main__":
         os.remove(arquivobd)
 
     db.create_all()
-
+       
     
-    print("Banco de Dados declarado com sucesso!")
+    
+    #Inserindo Barcos no Banco de Dados
+    barco1 = Barco(tipo="Iate",cor="azul",ano="2020")
+    barco2 = Barco(tipo="Caiaque",cor="vermelho",ano="2018")
+    barco3 = Barco(tipo="Lancha",cor="verde",ano="2015")
+    barco4 = Barco(tipo="Escuna",cor="amarelo",ano="2017")
+    #Inserindo Colaboradores no Banco de Dados
+    colaborador1 = Colaboradores(nome="João",email="Joao@bla.com",telefone="1111-1111",salario="6050")
+    colaborador2 = Colaboradores(nome="Miguel",email="Miguel@bla.com",telefone="2222-2222",salario="7000")
+    colaborador3 = Colaboradores(nome="Theago",email="Theago@bla.com",telefone="3333-3333",salario="10000")
+    colaborador4 = Colaboradores(nome="Nicolas",email="Nicolas@bla.com",telefone="4444-4444",salario="8800")
+    
+    db.session.add(barco1)
+    db.session.add(barco2)
+    db.session.add(barco3)
+    db.session.add(barco4)
+    db.session.add(colaborador1)
+    db.session.add(colaborador2)
+    db.session.add(colaborador3)
+    db.session.add(colaborador4)
+    db.session.commit()
+    todas = db.session.query(Barco).all()
+    #Listando todos os Barcos em formato Json
+    for p in todas:
+        print(p.json())
+    
+    #Listando todos os Colaboradores em formato Json
+    todosColaboradores = db.session.query(Colaboradores).all()
+    for p in todosColaboradores:
+        print(p.json())

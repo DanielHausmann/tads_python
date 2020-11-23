@@ -1,10 +1,29 @@
 from config import *
-from declararBD import *
+
+class Colaboradores(db.Model):
+    __table_args__ = {'extend_existing': True} 
+    id = db.Column(db.Integer,primary_key = True)
+    nome = db.Column(db.String(254))
+    email = db.Column(db.String(254))
+    telefone = db.Column(db.String(254))
+    salario = db.Column(db.String(254))
+    #colaboradores = db.relationship('Locacoes',backref="colaboradores",lazy="select")
+    def __str__(self):
+        return str(self.id) + "," + self.nome + "," + self.email + "," + self.telefone + "," + self.salario   
+    def json(self):
+        return {
+            "id" : self.id,
+            "nome" : self.nome,
+            "email" : self.email,
+            "telefone" : self.telefone,
+            "salario" : self.salario
+        }
+
 
 if __name__ == "__main__":
 
     if os.path.exists(arquivobd):
-        db.session.query(Colaboradores).delete()
+        os.remove(arquivobd)
 
     db.create_all()
     
