@@ -1,0 +1,22 @@
+body{
+    background-color:#dcdcdc;
+}
+
+#nav{
+    background-color: skyblue;
+}
+
+a{
+    color: black;
+}
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: skyblue;
+    height: 60px;
+    padding: 20px;
+    padding-bottom: 42px;;
+}

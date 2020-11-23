@@ -11,6 +11,7 @@ if __name__ == "__main__":
     exemplo2 = Barco(tipo="Caiaque",cor="vermelho",ano="2018")
     exemplo3 = Barco(tipo="Lancha",cor="verde",ano="2015")
     exemplo4 = Barco(tipo="Escuna",cor="amarelo",ano="2017")
+    
     db.session.add(exemplo1)
     db.session.add(exemplo2)
     db.session.add(exemplo3)

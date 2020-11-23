@@ -18,7 +18,6 @@ if __name__ == "__main__":
     db.session.add(colaborador3)
     db.session.add(colaborador4)
     db.session.commit()
-
     #Listando todos os Colaboradores em formato Json
     todosColaboradores = db.session.query(Colaboradores).all()
     for p in todosColaboradores:

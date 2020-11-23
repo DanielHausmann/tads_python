@@ -4,9 +4,9 @@ from declararBD import *
 if __name__ == "__main__":
 
     if os.path.exists(arquivobd):
-          db.session.query(Locacoes).delete()
-
+        db.session.query(Locacoes).delete()
     db.create_all()
+    
     
     #Inserindo Locações no Banco de Dados
     locacao1 = Locacoes(cliente = "Daniel",locacao="21/11/2020",dt_entrega = "26/11/2020")
@@ -37,7 +37,6 @@ if __name__ == "__main__":
     todasLocacoes = db.session.query(Locacoes).all()
     for p in todasLocacoes:
         print(p.json())
-
 
     
 
