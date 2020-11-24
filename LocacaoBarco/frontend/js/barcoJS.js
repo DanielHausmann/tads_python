@@ -7,7 +7,7 @@ $( document ).ready(function() {
             url:'http://localhost:5000/listar_barcos',
             method:'GET',
             dataType:'json', // os dados são recebidos no formato json
-            success:listar_barcos, // chama a função listar para processar o resultado
+            success:listar_barcos, // chama a função listar_barcos para processar o resultado
             error: function() {
                 alert("erro ao ler dados, verifique o backend");
             }
