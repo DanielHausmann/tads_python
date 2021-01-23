@@ -39,4 +39,29 @@ def listar_locacoes():
     resposta.headers.add("Access-Control-Allow-Origin","*")
     return resposta
 
+@app.route("/incluir_barco",methods=['post'])
+def incluir_barco():
+    
+    dados = request.get_json()
+    print(dados)
+    novo_barco = Barco(**dados) 
+    db.session.add(novo_barco)
+    db.session.commit()
+    return {"resultado" : "ok"}
+    resposta.headers.add("Access-Control-Allow-Origin","*")
+    return resposta
+
+
+@app.route("/incluir_colaborador",methods=['post'])
+def incluir_colaborador():
+    
+    dados = request.get_json()
+    print(dados)
+    novo_colaborador = Colaboradores(**dados) 
+    db.session.add(novo_colaborador)
+    db.session.commit()
+    return {"resultado" : "ok"}
+    resposta.headers.add("Access-Control-Allow-Origin","*")
+    return resposta
+
 app.run(debug = True) 

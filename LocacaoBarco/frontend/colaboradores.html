@@ -28,7 +28,7 @@
 
             <a class="nav-link nav-item" href="#" id="link_listar_colaboradores">Listar Colaboradores</a>
 
-            <a class="nav-link nav-item" href="#" id="link_adicionar_colaboradores">Adicionar Colaborador</a>
+            <a class="nav-link nav-item" href="#" id="link_adicionar_colaboradores" data-toggle="modal" data-target="#exampleModal">Adicionar Colaborador</a>
 
             <a class="nav-link nav-item" href="#" id="link_remover_colaboradores">Remover Colaborador</a>
 
@@ -55,7 +55,46 @@
         </tbody>
     </table>
 
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Novo Colaborador</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">ID:</label>
+                      <input type="number" class="form-control" id="id_colaboradores" required >
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Nome:</label>
+                      <input type="text" class="form-control" id="nome_colaboradores" >
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Email:</label>
+                        <input type="email" class="form-control" id="email_colaboradores" >
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Telefone:</label>
+                        <input type="tel" class="form-control " id="telefone_colaboradores" pattern="[0-9]{4}-[0-9]{4,5}" minlength="8" >
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Salario:</label>
+                        <input type="number" class="form-control" id="salario_colaboradores" >
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary" id="btn_incluir_colaborador">Incluir</button>
+            </div>
+        </div>
+        </div>
+    </div>
     <footer>
         <h4>Sistema de Locação de Barcos</h4><br>
       </footer>
@@ -69,8 +108,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <script src="js/colaboradorJS.js"></script>
+    
+    <script type="text/javascript">
+        $("#telefone_colaboradores").mask("0000-00009");
+        </script>
+
 </body>
 
 </html>

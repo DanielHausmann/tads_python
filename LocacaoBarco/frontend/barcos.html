@@ -28,7 +28,7 @@
 
             <a class="nav-link nav-item" href="#" id="link_listar_barcos">Listar Barcos</a>
 
-            <a class="nav-link nav-item" href="#" id="link_adicionar">Adicionar Barco</a>
+            <a class="nav-link nav-item" href="#" id="link_adicionar" data-toggle="modal" data-target="#exampleModal">Adicionar Barco</a>
 
             <a class="nav-link nav-item" href="#" id="link_remover">Remover Barco</a>
 
@@ -53,6 +53,62 @@
         <tbody id="corpoTabelaBarcos">
         </tbody>
     </table>
+
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Novo Barco</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">ID:</label>
+                      <input type="number" class="form-control" id="id_barco">
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Tipo:</label>
+                      <select class="form-control" id="tipo_barco" name="tipo_barco">
+                        <option value="Iate">Iate</option>
+                        <option value="Veleiro">Veleiro</option>
+                        <option value="Lancha">Lancha</option>
+                        <option value="Escuna">Escuna</option>
+                        <option value="Caiaque">Caiaque</option>
+                        <option value="JetBoat">JetBoat</option>
+                        <option value="Trawler">Trawler</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Cor:</label>
+                        <select class="form-control" id="cor_barco" name="cor_barco">
+                            <option value="Azul">Azul</option>
+                            <option value="Verde">Verde</option>
+                            <option value="Vermelho">Vermelho</option>
+                            <option value="Laranja">Laranja</option>
+                            <option value="Preto">Preto</option>
+                            <option value="Branco">Branco</option>
+                            <option value="Amarelo">Amarelo</option>
+                            <option value="Cinza">Cinza</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Ano:</label>
+                        <input type="number" class="form-control" id="ano_barco">
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary" id="btn_incluir_barco">Incluir</button>
+            </div>
+        </div>
+        </div>
+    </div>
     <footer>
         <h4>Sistema de Locação de Barcos</h4><br>
       </footer>
