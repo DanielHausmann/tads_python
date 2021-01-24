@@ -39,6 +39,7 @@ def listar_locacoes():
     resposta.headers.add("Access-Control-Allow-Origin","*")
     return resposta
 
+#Rota para a Inserção de Barcos
 @app.route("/incluir_barco",methods=['post'])
 def incluir_barco():
     
@@ -51,7 +52,7 @@ def incluir_barco():
     resposta.headers.add("Access-Control-Allow-Origin","*")
     return resposta
 
-
+#Rota para a Inserção de Colaboradores
 @app.route("/incluir_colaborador",methods=['post'])
 def incluir_colaborador():
     

@@ -39,17 +39,22 @@ $( document ).ready(function() {
         
     });
 
+    // Codificação referente a inserção de Barcos
     $("#btn_incluir_barco").click(function(){
+        //Verifica se algum valor esta vazio
         if($("#id_barco").val()==""|| $("#ano_barco").val()==""){
             alert("Favor preencher todos os dados!")
         }else{
+            //obtem os dados do formulário
             id_barco = $("#id_barco").val();
             tipo_barco = $("#tipo_barco").val();
             cor_barco = $("#cor_barco").val();
             ano_barco = $("#ano_barco").val();
 
+            // prepara os dados para o envio em json
             dados = JSON.stringify({id : id_barco, tipo : tipo_barco, cor : cor_barco, ano : ano_barco});
 
+            //manda para o back-end
             $.ajax({
                 url: 'http://localhost:5000/incluir_barco',
                 type : 'POST',
@@ -61,15 +66,18 @@ $( document ).ready(function() {
             })
             function incluirBarco(resposta) {
                 if (resposta.resultado =="ok"){
-                
+                //mensagem de sucesso
                 alert("Barco Incluido");
+                //limpa os valores de ID e ANO do barco
                 $("#id_barco").val("");
                 $("#ano_barco").val("");
                 }else{
-                    alert("Erro no BackEnd");
+                    //mensagem caso ocorra algum erro de comunicação
+                    alert("Erro na Comunicação");
                 }
             }
             function erroIncluirBarco(resposta){
+                //mensagem caso ocorra algum erro na requisição back-end
                 alert("Erro na chamada Backend");
             }
         }
