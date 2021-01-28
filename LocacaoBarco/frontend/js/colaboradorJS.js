@@ -39,20 +39,19 @@ $( document ).ready(function() {
     // Codificação referente a inserção de Colaboradores
     $("#btn_incluir_colaborador").click(function(){
         //Verifica se algum valor esta vazio
-        if($("#id_colaboradores").val()==""|| $("#nome_colaboradores").val()=="" || $("#email_colaboradores").val()==""
+        if($("#nome_colaboradores").val()=="" || $("#email_colaboradores").val()==""
         ||$("#telefone_colaboradores").val()==""|| $("#salario_colaboradores").val()==""){
             alert("Favor preencher todos os dados!")
         }else{
             //obtem os dados do formulário
-            id_colaboradores = $("#id_colaboradores").val();
             nome_colaboradores = $("#nome_colaboradores").val();
             email_colaboradores = $("#email_colaboradores").val();
             telefone_colaboradores = $("#telefone_colaboradores").val();
             salario_colaboradores = $("#salario_colaboradores").val();
             
             // prepara os dados para o envio em json
-            dados = JSON.stringify({id : id_colaboradores, nome : nome_colaboradores, email : email_colaboradores,
-                telefone : telefone_colaboradores, salario : salario_colaboradores});
+            dados = JSON.stringify({nome : nome_colaboradores, email : email_colaboradores,
+                    telefone : telefone_colaboradores, salario : salario_colaboradores});
 
             //manda para o back-end
             $.ajax({
@@ -69,7 +68,6 @@ $( document ).ready(function() {
                 //mensagem de sucesso
                 alert("Colaborador Incluido");
                 //limpa todos os valores dos campos do formulário
-                $("#id_colaboradores").val("");
                 $("#nome_colaboradores").val("");
                 $("#email_colaboradores").val("");
                 $("#telefone_colaboradores").val("");
