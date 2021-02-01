@@ -1,4 +1,6 @@
 from config import *
+from declararBD import *
+
 
 #Declara a Tabela Colaboradores no Banco de Dados
 class Colaboradores(db.Model):

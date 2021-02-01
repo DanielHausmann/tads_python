@@ -1,6 +1,8 @@
 from config import *
-   
+from declararBD import *
 #Declara a Tabela Barco no Banco de Dados
+
+
 class Barco(db.Model):
     __table_args__ = {'extend_existing': True} 
     id = db.Column(db.Integer,primary_key = True)
@@ -46,4 +48,5 @@ if __name__ == "__main__":
     todas = db.session.query(Barco).all()
     for p in todas:
         print(p.json())
-    
+
+

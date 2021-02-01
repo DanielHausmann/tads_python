@@ -1,5 +1,4 @@
 from config import *
-   
 #Declara a Tabela Barco no Banco de Dados
 class Barco(db.Model):
     __table_args__ = {'extend_existing': True} 
@@ -59,7 +58,7 @@ if __name__ == "__main__":
     colaborador2 = Colaboradores(nome="Miguel",email="Miguel@bla.com",telefone="2222-2222",salario="7000")
     colaborador3 = Colaboradores(nome="Theago",email="Theago@bla.com",telefone="3333-3333",salario="10000")
     colaborador4 = Colaboradores(nome="Nicolas",email="Nicolas@bla.com",telefone="4444-4444",salario="8800")
-    
+        
     #Persiste os objetos das classes no BD
     db.session.add(barco1)
     db.session.add(barco2)
@@ -70,13 +69,15 @@ if __name__ == "__main__":
     db.session.add(colaborador3)
     db.session.add(colaborador4)
     db.session.commit()
-    
+        
     #Listando todos os Barcos em formato Json
     todas = db.session.query(Barco).all()
     for p in todas:
         print(p.json())
-    
+        
     #Listando todos os Colaboradores em formato Json
     todosColaboradores = db.session.query(Colaboradores).all()
     for p in todosColaboradores:
         print(p.json())
+
+            
