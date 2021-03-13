@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <title>SLB Barcos</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light " id="nav">
+        <a class="navbar-brand" href="#"><img src="images/ancora.png" height="50px"></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <a class="nav-link nav-item" href="main.html" id="link_inicio">Inicio <span class="sr-only">(current)</span></a>
+
+            <a class="nav-link nav-item" href="#" id="link_listar_barcos">Listar Barcos</a>
+
+            <a class="nav-link nav-item" href="#" id="link_adicionar" data-toggle="modal" data-target="#modalIncluirBarco">Adicionar Barco</a>
+
+        </div>
+    </nav>
+
+    <div id="main" >
+        <div id="conteudoInicialBarco" >
+            Seja bem vindo a página referente a Barcos!!
+        </div>
+    </div>
+
+    <table id="tabelaBarcos" class="table invisible">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Cor</th>
+                <th scope="col">Ano</th>
+                <th scope="col">Operações</th>
+            </tr>
+        </thead>
+        <tbody id="corpoTabelaBarcos">
+        </tbody>
+    </table>
+
+    
+    <!-- Modal -->
+    <div class="modal fade" id="modalIncluirBarco" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Novo Barco</h5>
+            <button type="button"  class="close" onclick="atualizarTabelaBarcos()" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Tipo:</label>
+                      <select class="form-control" id="tipo_barco" name="tipo_barco">
+                        <option value="Iate">Iate</option>
+                        <option value="Veleiro">Veleiro</option>
+                        <option value="Lancha">Lancha</option>
+                        <option value="Escuna">Escuna</option>
+                        <option value="Caiaque">Caiaque</option>
+                        <option value="JetBoat">JetBoat</option>
+                        <option value="Trawler">Trawler</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Cor:</label>
+                        <select class="form-control" id="cor_barco" name="cor_barco">
+                            <option value="Azul">Azul</option>
+                            <option value="Verde">Verde</option>
+                            <option value="Vermelho">Vermelho</option>
+                            <option value="Laranja">Laranja</option>
+                            <option value="Preto">Preto</option>
+                            <option value="Branco">Branco</option>
+                            <option value="Amarelo">Amarelo</option>
+                            <option value="Cinza">Cinza</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Ano:</label>
+                        <input type="number" class="form-control" id="ano_barco">
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary" id="btn_incluir_barco">Incluir</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <footer>
+        <h4>Sistema de Locação de Barcos</h4><br>
+      </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+        function atualizarTabelaBarcos() {
+            if (! $("#tabelaBarcos").hasClass('invisible')) {
+                document.getElementById("link_listar_barcos").click();
+            }
+        }
+        </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script src="js/barcoJS.js"></script>
+</body>
+
+</html>
